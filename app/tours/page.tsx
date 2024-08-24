@@ -1,4 +1,4 @@
-const url = 'https://www.course-api.com/react-tours-projects';
+const url = 'https://www.course-api.com/react-tours-project';
 
 type Tour = {
   id: string;
