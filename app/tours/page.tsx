@@ -7,11 +7,16 @@ type Tour = {
   image: string;
   price: string;
 };
-
-async function ToursPage() {
+const fetchTours = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const response = await fetch(url);
   const data: Tour[] = await response.json();
-  console.log(data);
+  return data;
+};
+
+async function ToursPage() {
+  const data = await fetchTours();
+
   return (
     <section>
       <h1 className="text-3xl mb-4">Tours</h1>
