@@ -1,11 +1,11 @@
 import Form from '@/components/Form';
-import UserList from '@/components/UserList';
+import UsersList from '@/components/UsersList';
 
 function ActionsPage() {
   return (
     <>
       <Form />
-      <UserList />
+      <UsersList />
     </>
   );
 }
