@@ -37,6 +37,8 @@ export const fetchUsers = async (): Promise<User[]> => {
   return users;
 };
 
+// Error without "export"42 Route Handlers - POST
+// const saveUser = async (user: User) => {
 export const saveUser = async (user: User) => {
   const users = await fetchUsers();
   users.push(user);
