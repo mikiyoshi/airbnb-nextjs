@@ -10,19 +10,23 @@ type User = {
   lastName: string;
 };
 
-export const createUser = async (formData: FormData) => {
+export const createUser = async (prevState: any, formData: FormData) => {
   'use server';
+  console.log(prevState);
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const firstName = formData.get('firstName') as string;
   const lastName = formData.get('lastName') as string;
   const newUser: User = { firstName, lastName, id: Date.now().toString() };
 
   try {
+    // throw new Error('something wrong'); // test for error
     await saveUser(newUser);
     revalidatePath('/actions'); // this is same page auto reload display
-    // will trigger error
+    // throw Error();
+    return 'user created successfully...';
   } catch (error) {
     console.error(error);
+    return 'failed to create user...';
   }
   // redirect('/'); // this is redirect to Home
 };
