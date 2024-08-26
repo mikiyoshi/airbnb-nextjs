@@ -12,19 +12,19 @@ type User = {
 
 export const createUser = async (formData: FormData) => {
   'use server';
-
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const firstName = formData.get('firstName') as string;
   const lastName = formData.get('lastName') as string;
   const newUser: User = { firstName, lastName, id: Date.now().toString() };
 
   try {
     await saveUser(newUser);
+    revalidatePath('/actions'); // this is same page auto reload display
     // will trigger error
   } catch (error) {
     console.error(error);
   }
-  // revalidatePath('/actions'); // this is same page auto reload display
-  redirect('/'); // this is redirect to Home
+  // redirect('/'); // this is redirect to Home
 };
 
 export const fetchUsers = async (): Promise<User[]> => {
